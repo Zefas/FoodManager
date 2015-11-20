@@ -1,5 +1,6 @@
 package lt.vaidotas.food.app;
 
+import lt.vaidotas.food.business.TimeCalculator;
 import lt.vaidotas.food.business.restaurant.RestaurantManager;
 import lt.vaidotas.food.business.voting.VoteManager;
 import lt.vaidotas.food.infrastructure.RestaurantMockDao;
@@ -16,7 +17,7 @@ public class SpringConfig {
 
     @Bean
     public VoteManager voteManager() {
-        return new VoteManager(new VotePersistenceMockService());
+        return new VoteManager(new VotePersistenceMockService(), new TimeCalculator());
     }
 
     @Bean

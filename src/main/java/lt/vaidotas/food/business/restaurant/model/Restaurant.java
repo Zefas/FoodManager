@@ -1,5 +1,6 @@
 package lt.vaidotas.food.business.restaurant.model;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class Restaurant {
@@ -24,5 +25,18 @@ public class Restaurant {
 
     public Set<MenuItem> getMenuItems() {
         return menuItems;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Restaurant that = (Restaurant) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

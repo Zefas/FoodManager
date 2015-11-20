@@ -42,7 +42,7 @@ public class VoteController {
     @RequestMapping(value = "/votes/get/{date}", method = RequestMethod.GET)
     @ResponseBody
     public GenericResponse<List<Vote>> getVotes(@PathVariable("date") @DateTimeFormat(iso= DateTimeFormat.ISO.DATE) Date date) {
-        List<Vote> votes = voteManager.getVotes(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        List<Vote> votes = voteManager.getVotesAll(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         return GenericResponse.ok(votes);
     }
 
