@@ -1,4 +1,4 @@
-package lt.vaidotas.food.services;
+package lt.vaidotas.food.infrastructure;
 
 import lt.vaidotas.food.business.voting.model.Vote;
 import lt.vaidotas.food.business.voting.services.VoteRegistration;

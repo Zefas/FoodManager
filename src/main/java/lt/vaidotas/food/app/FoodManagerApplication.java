@@ -1,4 +1,4 @@
-package lt.vaidotas.food;
+package lt.vaidotas.food.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

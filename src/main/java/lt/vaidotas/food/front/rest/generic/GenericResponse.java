@@ -1,4 +1,4 @@
-package lt.vaidotas.food.front.rest;
+package lt.vaidotas.food.front.rest.generic;
 
 public class GenericResponse<T> {
 
@@ -29,15 +29,15 @@ public class GenericResponse<T> {
         this.status = status;
     }
 
-    public static <T> GenericResponse ok(final T data) {
+    public static <T> GenericResponse<T> ok(final T data) {
         return new GenericResponse<>(data, ResponseStatus.SUCCESS);
     }
 
-    public static <T> GenericResponse fail(final T data) {
+    public static <T> GenericResponse<T> fail(final T data) {
         return new GenericResponse<>(data, ResponseStatus.FAIL);
     }
 
-    public static <T> GenericResponse error(final T data) {
+    public static <T> GenericResponse<T> error(final T data) {
         return new GenericResponse<>(data, ResponseStatus.ERROR);
     }
 }

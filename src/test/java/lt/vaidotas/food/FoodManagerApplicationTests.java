@@ -1,5 +1,6 @@
 package lt.vaidotas.food;
 
+import lt.vaidotas.food.app.FoodManagerApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
