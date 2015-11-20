@@ -1,14 +1,14 @@
 package lt.vaidotas.food.infrastructure;
 
 import lt.vaidotas.food.business.voting.model.Vote;
-import lt.vaidotas.food.business.voting.services.VoteRegistration;
+import lt.vaidotas.food.business.voting.services.VotePersistence;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-public class VoteRegistrationMockService implements VoteRegistration {
+public class VotePersistenceMockService implements VotePersistence {
     @Override
     public void addVote(final Integer userId, final Integer restaurantId, final LocalDate date) {
 

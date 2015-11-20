@@ -1,7 +1,7 @@
 package lt.vaidotas.food.business.voting;
 
 import lt.vaidotas.food.business.voting.model.Vote;
-import lt.vaidotas.food.business.voting.services.VoteRegistration;
+import lt.vaidotas.food.business.voting.services.VotePersistence;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,10 +10,10 @@ import java.util.Objects;
 
 public class VoteManager {
 
-    private final VoteRegistration voteRegistration;
+    private final VotePersistence votePersistence;
 
-    public VoteManager(final VoteRegistration voteRegistration) {
-        this.voteRegistration = voteRegistration;
+    public VoteManager(final VotePersistence votePersistence) {
+        this.votePersistence = votePersistence;
     }
 
     public void vote(final Integer userId, final Integer restaurantId) throws BusinessValidationException {
@@ -21,11 +21,11 @@ public class VoteManager {
         Objects.requireNonNull(restaurantId, "Restaurant ID cannot be null.");
 
         if (shouldGoToNextDaysVote()) {
-            voteRegistration.addVote(userId, restaurantId, LocalDate.now().plusDays(1));
+            votePersistence.addVote(userId, restaurantId, LocalDate.now().plusDays(1));
             return;
         }
 
-        voteRegistration.addVote(userId, restaurantId, LocalDate.now());
+        votePersistence.addVote(userId, restaurantId, LocalDate.now());
     }
 
     private boolean shouldGoToNextDaysVote() {
@@ -34,7 +34,7 @@ public class VoteManager {
 
 
     public List<Vote> getVotes(final LocalDate date) {
-        return voteRegistration.loadVotes(date);
+        return votePersistence.loadVotes(date);
     }
 
 }
