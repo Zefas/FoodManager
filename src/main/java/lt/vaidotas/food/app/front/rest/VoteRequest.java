@@ -1,8 +1,8 @@
 package lt.vaidotas.food.app.front.rest;
 
 public class VoteRequest {
-    public Integer userId;
-    public Integer restaurantId;
+    private Integer userId;
+    private Integer restaurantId;
 
     public VoteRequest() {
     }

@@ -1,19 +1,25 @@
 package lt.vaidotas.food;
 
-import lt.vaidotas.food.app.FoodManagerApplication;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-
+/*@SuppressWarnings("unchecked")
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = FoodManagerApplication.class)
-@WebAppConfiguration
+@WebAppConfiguration*/
 public class FoodManagerApplicationTests {
 
+    /*private RestTemplate restTemplate;
+
+    @Before
+    public void before() {
+        restTemplate = new RestTemplate();
+    }
+
 	@Test
-	public void contextLoads() {
-	}
+	public void restaurantsGetWorks() {
+        GenericResponse response = restTemplate.getForObject("http://localhost:9090/food/restaurant/get", GenericResponse.class);
+
+        assertEquals(ResponseStatus.SUCCESS, response.getStatus());
+        List<RestaurantRequestResponse> data = (List<RestaurantRequestResponse>) response.getData();
+        assertEquals(3, data.size());
+    }*/
 
 }

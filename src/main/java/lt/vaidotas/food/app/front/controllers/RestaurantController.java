@@ -29,7 +29,7 @@ public class RestaurantController {
     @ResponseBody
     public GenericResponse<List<RestaurantRequestResponse>> getRestaurants() {
         List<Restaurant> allRestaurants = restaurantManager.getAllRestaurants();
-        return GenericResponse.error(new ArrayList<>(restaurantMapper.from(allRestaurants)));
+        return GenericResponse.ok(new ArrayList<>(restaurantMapper.from(allRestaurants)));
     }
 
     @RequestMapping(value = "/restaurant/add", method = RequestMethod.POST)

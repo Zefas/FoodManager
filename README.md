@@ -1,7 +1,9 @@
 
 ## API - Voting
 
-GET: http://localhost:9090/food/votes/get/2015-11-20
+GET: http://localhost:9090/food/votes/get/2015-11-25
+
+GET: http://localhost:9090/food/votes/winner/2015-11-25
 
 POST: http://localhost:9090/food/votes/add
 

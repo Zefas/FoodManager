@@ -15,5 +15,9 @@ public class DateUtil {
         return Date.from(localDate.atZone(ZoneId.systemDefault()).toInstant());
     }
 
+    public static LocalDate toLocalDate(final Date date) {
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
 
 }

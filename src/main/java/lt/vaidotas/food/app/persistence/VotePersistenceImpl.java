@@ -8,12 +8,15 @@ import lt.vaidotas.food.app.persistence.repository.VoteRepository;
 import lt.vaidotas.food.business.voting.model.Vote;
 import lt.vaidotas.food.business.voting.services.VotePersistence;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class VotePersistenceImpl implements VotePersistence {
 
     @Autowired
@@ -23,18 +26,21 @@ public class VotePersistenceImpl implements VotePersistence {
     private VotePersistenceMapper mapper;
 
     @Override
+    @Transactional
     public void addVote(Integer userId, Integer restaurantId, LocalDate date) {
-        VoteEntity entity = new VoteEntity(null, restaurantId, userId, DateUtil.toDate(date));
+        VoteEntity entity = new VoteEntity(restaurantId, userId, DateUtil.toDate(date));
         voteRepository.save(entity);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Vote> loadVotes(LocalDate date) {
         Iterable<VoteEntity> all = voteRepository.findByTime(DateUtil.toDate(date), DateUtil.toDate(date.plusDays(1)));
         return new ArrayList<>(mapper.to(Lists.newArrayList(all)));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<Vote> loadVote(LocalDate day, Integer userId) {
         Optional<VoteEntity> voteEntity = loadVoteEntity(day, userId);
 
@@ -56,6 +62,7 @@ public class VotePersistenceImpl implements VotePersistence {
     }
 
     @Override
+    @Transactional
     public void replaceVote(Integer userId, Integer restaurantId, LocalDate day) {
         Optional<VoteEntity> vote = loadVoteEntity(day, userId);
 

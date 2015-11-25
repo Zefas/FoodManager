@@ -1,10 +1,11 @@
 package lt.vaidotas.food.app;
 
-import lt.vaidotas.food.app.persistence.RestaurantPersistenceImpl;
-import lt.vaidotas.food.app.persistence.VotePersistenceImpl;
 import lt.vaidotas.food.business.TimeCalculator;
 import lt.vaidotas.food.business.restaurant.RestaurantManager;
+import lt.vaidotas.food.business.restaurant.services.RestaurantPersistence;
 import lt.vaidotas.food.business.voting.VoteManager;
+import lt.vaidotas.food.business.voting.services.VotePersistence;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,14 +18,21 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan("lt.vaidotas.food")
 public class SpringConfig extends WebMvcConfigurerAdapter {
 
+    @Autowired
+    private RestaurantPersistence restaurantPersistence;
+
+    @Autowired
+    private VotePersistence votePersistence;
+
+
     @Bean
     public VoteManager voteManager() {
-        return new VoteManager(new VotePersistenceImpl(), new TimeCalculator());
+        return new VoteManager(votePersistence, restaurantPersistence, new TimeCalculator());
     }
 
     @Bean
     public RestaurantManager restaurantManager() {
-        return new RestaurantManager(new RestaurantPersistenceImpl());
+        return new RestaurantManager(restaurantPersistence);
     }
 
     @Override

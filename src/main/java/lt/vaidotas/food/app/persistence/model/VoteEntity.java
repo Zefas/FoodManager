@@ -2,10 +2,7 @@ package lt.vaidotas.food.app.persistence.model;
 
 import com.google.common.base.MoreObjects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -13,6 +10,7 @@ import java.util.Date;
 public class VoteEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
@@ -30,6 +28,12 @@ public class VoteEntity {
 
     public VoteEntity(final Integer id, final Integer restaurantId, final Integer userId, final Date time) {
         this.id = id;
+        this.restaurantId = restaurantId;
+        this.userId = userId;
+        this.time = time;
+    }
+
+    public VoteEntity(final Integer restaurantId, final Integer userId, final Date time) {
         this.restaurantId = restaurantId;
         this.userId = userId;
         this.time = time;

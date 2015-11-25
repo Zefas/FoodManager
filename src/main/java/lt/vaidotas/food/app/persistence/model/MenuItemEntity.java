@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class MenuItemEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 

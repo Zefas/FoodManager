@@ -10,6 +10,7 @@ import java.util.Set;
 public class RestaurantEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 

@@ -5,10 +5,10 @@ public class GenericResponse<T> {
     private T data;
     private ResponseStatus status;
 
-    public GenericResponse() {
+    private GenericResponse() {
     }
 
-    public GenericResponse(final T data, final ResponseStatus status) {
+    private GenericResponse(final T data, final ResponseStatus status) {
         this.data = data;
         this.status = status;
     }

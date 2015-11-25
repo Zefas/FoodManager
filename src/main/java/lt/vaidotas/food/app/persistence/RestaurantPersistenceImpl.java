@@ -1,5 +1,6 @@
 package lt.vaidotas.food.app.persistence;
 
+
 import com.google.common.collect.Lists;
 import lt.vaidotas.food.app.persistence.mappers.RestaurantPersistenceMapper;
 import lt.vaidotas.food.app.persistence.model.RestaurantEntity;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RestaurantPersistenceImpl implements RestaurantPersistence {
@@ -22,6 +24,17 @@ public class RestaurantPersistenceImpl implements RestaurantPersistence {
 
     @Autowired
     private RestaurantPersistenceMapper mapper;
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Restaurant> findById(final Integer id) {
+        RestaurantEntity entity = restaurantRepository.findOne(id);
+        if (entity == null) {
+            return Optional.empty();
+        }
+
+        return Optional.of(mapper.to(entity));
+    }
 
     @Override
     @Transactional(readOnly = true)
@@ -37,6 +50,7 @@ public class RestaurantPersistenceImpl implements RestaurantPersistence {
     }
 
     @Override
+    @Transactional
     public void update(Restaurant restaurant) {
         saveOrUpdate(restaurant);
     }

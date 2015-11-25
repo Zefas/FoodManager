@@ -2,9 +2,13 @@ package lt.vaidotas.food.business.voting;
 
 public class BusinessValidationException extends Exception {
 
-    public final String message;
+    private final String businessMessage;
 
-    public BusinessValidationException(final String message) {
-        this.message = message;
+    public BusinessValidationException(final String businessMessage) {
+        this.businessMessage = businessMessage;
+    }
+
+    public String getBusinessMessage() {
+        return businessMessage;
     }
 }
