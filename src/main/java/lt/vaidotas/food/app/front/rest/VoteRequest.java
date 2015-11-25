@@ -1,4 +1,4 @@
-package lt.vaidotas.food.front.rest;
+package lt.vaidotas.food.app.front.rest;
 
 public class VoteRequest {
     public Integer userId;

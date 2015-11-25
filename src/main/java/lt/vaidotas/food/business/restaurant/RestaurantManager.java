@@ -3,7 +3,6 @@ package lt.vaidotas.food.business.restaurant;
 import lt.vaidotas.food.business.restaurant.model.Restaurant;
 import lt.vaidotas.food.business.restaurant.services.RestaurantPersistence;
 import lt.vaidotas.food.business.voting.BusinessValidationException;
-import lt.vaidotas.food.front.rest.RestaurantRequestResponse;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class RestaurantManager {
         this.restaurantPersistence = restaurantPersistence;
     }
 
-    public List<RestaurantRequestResponse> getAllRestaurants() {
+    public List<Restaurant> getAllRestaurants() {
         return restaurantPersistence.loadAll();
     }
 

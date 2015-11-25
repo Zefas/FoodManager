@@ -1,21 +1,27 @@
-package lt.vaidotas.food.front.rest;
+package lt.vaidotas.food.app.front.rest;
 
 import java.util.Set;
 
 public class RestaurantRequestResponse {
 
-    private String id;
+    private Integer id;
     private String name;
     private Set<MenuItemRequestResponse> menuItems;
 
     public RestaurantRequestResponse() {
     }
 
-    public String getId() {
+    public RestaurantRequestResponse(final Integer id, final String name, final Set<MenuItemRequestResponse> menuItems) {
+        this.id = id;
+        this.name = name;
+        this.menuItems = menuItems;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(final String id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 

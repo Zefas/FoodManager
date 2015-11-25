@@ -1,4 +1,4 @@
-package lt.vaidotas.food.front.rest.generic;
+package lt.vaidotas.food.app.front.rest.generic;
 
 public enum ResponseStatus {
     SUCCESS("success"), FAIL("fail"), ERROR("error");

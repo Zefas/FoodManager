@@ -1,4 +1,4 @@
-package lt.vaidotas.food.front.rest.generic;
+package lt.vaidotas.food.app.front.rest.generic;
 
 public class GenericResponse<T> {
 

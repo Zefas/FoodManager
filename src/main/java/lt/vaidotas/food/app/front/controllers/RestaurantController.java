@@ -1,9 +1,11 @@
-package lt.vaidotas.food.front.controllers;
+package lt.vaidotas.food.app.front.controllers;
 
+import lt.vaidotas.food.app.front.mappers.RestaurantMapper;
+import lt.vaidotas.food.app.front.rest.RestaurantRequestResponse;
+import lt.vaidotas.food.app.front.rest.generic.GenericResponse;
 import lt.vaidotas.food.business.restaurant.RestaurantManager;
+import lt.vaidotas.food.business.restaurant.model.Restaurant;
 import lt.vaidotas.food.business.voting.BusinessValidationException;
-import lt.vaidotas.food.front.rest.RestaurantRequestResponse;
-import lt.vaidotas.food.front.rest.generic.GenericResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,7 +28,8 @@ public class RestaurantController {
     @RequestMapping(value = "/restaurant/get", method = RequestMethod.GET)
     @ResponseBody
     public GenericResponse<List<RestaurantRequestResponse>> getRestaurants() {
-        return GenericResponse.error(restaurantManager.getAllRestaurants());
+        List<Restaurant> allRestaurants = restaurantManager.getAllRestaurants();
+        return GenericResponse.error(new ArrayList<>(restaurantMapper.from(allRestaurants)));
     }
 
     @RequestMapping(value = "/restaurant/add", method = RequestMethod.POST)
@@ -36,7 +40,7 @@ public class RestaurantController {
         }
 
         try {
-            restaurantManager.addNewRestaurant(restaurantMapper.mapTo(data));
+            restaurantManager.addNewRestaurant(restaurantMapper.to(data));
             return GenericResponse.ok("");
         } catch (BusinessValidationException e) {
             return GenericResponse.fail("Not Implemented!");
@@ -51,7 +55,7 @@ public class RestaurantController {
         }
 
         try {
-            restaurantManager.updateRestaurant(restaurantMapper.mapTo(data));
+            restaurantManager.updateRestaurant(restaurantMapper.to(data));
             return GenericResponse.ok("");
         } catch (BusinessValidationException e) {
             return GenericResponse.fail("Not Implemented!");

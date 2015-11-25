@@ -5,17 +5,17 @@ import java.util.Set;
 
 public class Restaurant {
 
-    private final String id;
+    private final Integer id;
     private final String name;
     private final Set<MenuItem> menuItems;
 
-    public Restaurant(final String id, final String name, final Set<MenuItem> menuItems) {
+    public Restaurant(final Integer id, final String name, final Set<MenuItem> menuItems) {
         this.id = id;
         this.name = name;
         this.menuItems = menuItems;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
