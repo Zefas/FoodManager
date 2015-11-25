@@ -1,25 +1,30 @@
 
 ## API - Voting
 
-GET: http://localhost:9090/food/votes/get/2015-11-25
+All votes for day: 
+http://localhost:9090/food/votes/get/2015-11-25 (GET)
 
-GET: http://localhost:9090/food/votes/winner/2015-11-25
+Add Vote:
+http://localhost:9090/food/votes/add (POST)
 
-POST: http://localhost:9090/food/votes/add
+    {"userId": 1, "restaurantId": 2}
 
-    {"userId": -1, "restaurantId": -2}
-
+Find Winners of the day (multiple if same no of votes):
+http://localhost:9090/food/votes/winner/2015-11-25 (GET)
 
 
 ## API - Restaurants
 
-GET: http://localhost:9090/food/restaurant/get
+All restaurants:
+http://localhost:9090/food/restaurant/get (GET)
 
-POST: http://localhost:9090/food/restaurant/add
+Add new restaurant:
+http://localhost:9090/food/restaurant/add (POST)
 
     {"id": 1, "name": "Restaurant 01", "menuItems": [{"name": "Item 01", "price": 20}, {"name": "Item 02", "price": 15}]}
 
-POST: http://localhost:9090/food/restaurant/update
+Update restaurant:
+http://localhost:9090/food/restaurant/update (POST)
 
     {"id": null, "name": "Restaurant 01", "menuItems": [{"name": "Item 01", "price": 20}, {"name": "Item 02", "price": 15}]}
 
